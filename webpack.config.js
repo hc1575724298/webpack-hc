@@ -5,7 +5,7 @@
  * @email: 1373842098@qq.com
  * @Date: 2022-06-27 20:25:55
  * @LastEditors: sj
- * @LastEditTime: 2022-06-27 20:55:50
+ * @LastEditTime: 2022-06-27 21:02:36
  */
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
@@ -33,7 +33,11 @@ module:{
     {
       test: /\.css$/, // 匹配所有的css文件
       use: [ "style-loader", "css-loader"]
-    }
+    },
+{
+  test: /\.less$/, // 匹配执行类型的文件
+  use: [ "style-loader", "css-loader", 'less-loader']
+}
   ]
 }
 }
