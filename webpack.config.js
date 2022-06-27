@@ -5,7 +5,7 @@
  * @email: 1373842098@qq.com
  * @Date: 2022-06-27 20:25:55
  * @LastEditors: sj
- * @LastEditTime: 2022-06-27 20:37:35
+ * @LastEditTime: 2022-06-27 20:55:50
  */
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
@@ -24,5 +24,16 @@ module.exports = {
       filename: 'index.html' // 生成文件的名称
     }),
     new CleanWebpackPlugin()
+  ],
+  devServer: {
+    open: true,
+  },
+module:{
+  rules:[
+    {
+      test: /\.css$/, // 匹配所有的css文件
+      use: [ "style-loader", "css-loader"]
+    }
   ]
+}
 }
