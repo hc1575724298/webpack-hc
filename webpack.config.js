@@ -5,11 +5,12 @@
  * @email: 1373842098@qq.com
  * @Date: 2022-06-27 20:25:55
  * @LastEditors: sj
- * @LastEditTime: 2022-06-27 21:27:12
+ * @LastEditTime: 2022-06-27 21:37:33
  */
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   mode: 'development',
@@ -24,6 +25,7 @@ module.exports = {
       filename: 'index.html' // 生成文件的名称
     }),
     // new CleanWebpackPlugin()
+    new VueLoaderPlugin()
   ],
   devServer: {
     open: true,
@@ -76,7 +78,21 @@ module:{
           }
         }
       ]
-}
+    },
+    {
+      test: /\.js$/,
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'] // 预设:转码规则(用bable开发环境本来预设的)
+        }
+      }
+    },
+    {
+      test: /\.vue$/,
+      loader: 'vue-loader'
+    }
   ]
 }
 }
